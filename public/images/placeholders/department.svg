@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="deptGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" rx="30" fill="url(#deptGrad)"/>
+  <circle cx="400" cy="250" r="180" fill="none" stroke="#38BDF8" stroke-opacity="0.25" stroke-width="3" stroke-dasharray="12 12"/>
+  
+  <!-- Hospital Building Icon Graphic -->
+  <g transform="translate(400, 220)" fill="#FFFFFF">
+    <rect x="-80" y="-80" width="160" height="160" rx="20" fill="#38BDF8" opacity="0.2"/>
+    <path d="M -60 60 V -40 L 0 -80 L 60 -40 V 60 Z" fill="none" stroke="#FFFFFF" stroke-width="12" stroke-linejoin="round"/>
+    <path d="M -20 -10 H 20 M 0 -30 V 10" stroke="#FFFFFF" stroke-width="14" stroke-linecap="round"/>
+  </g>
+
+  <text x="400" y="420" text-anchor="middle" fill="#38BDF8" font-family="Arial, sans-serif" font-weight="900" font-size="28" letter-spacing="3">CAREPLUS CLINICAL DEPARTMENT</text>
+</svg>

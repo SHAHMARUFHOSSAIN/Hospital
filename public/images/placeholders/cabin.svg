@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="cabinGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" rx="30" fill="url(#cabinGrad)"/>
+  
+  <g transform="translate(400, 220)" stroke="#38BDF8" stroke-width="10" stroke-linecap="round" fill="none">
+    <!-- Bed Frame -->
+    <path d="M -120 40 V -20 M -120 10 H 120 V 40 M 120 40 V -50"/>
+    <path d="M -100 10 V -10 H -50 V 10"/>
+    <!-- Heart pulse above bed -->
+    <path d="M -80 -70 L -40 -70 L -20 -110 L 0 -30 L 20 -90 L 40 -70 L 80 -70" stroke="#F43F5E" stroke-width="8"/>
+  </g>
+
+  <text x="400" y="420" text-anchor="middle" fill="#38BDF8" font-family="Arial, sans-serif" font-weight="900" font-size="28" letter-spacing="3">CAREPLUS LUXURY SUITE &amp; ICU BED</text>
+</svg>
