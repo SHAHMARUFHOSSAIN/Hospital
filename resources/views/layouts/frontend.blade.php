@@ -178,26 +178,26 @@
     </header>
 
     <!-- Mobile Bottom Quick Navigation Bar (For Mobile Phones) -->
-    <div class="sm:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-slate-200 shadow-[0_-5px_20px_rgba(0,0,0,0.08)] py-2 px-3 flex items-center justify-around text-center">
-        <a href="{{ route('home') }}" class="flex flex-col items-center text-[10px] font-extrabold text-slate-600 hover:text-[#0284C7]">
+    <div class="sm:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-slate-200 shadow-[0_-5px_20px_rgba(0,0,0,0.08)] pt-1.5 pb-2 px-3 flex items-center justify-around text-center">
+        <a href="{{ route('home') }}" class="flex flex-col items-center text-[10px] font-extrabold text-slate-600 hover:text-[#0284C7] transition">
             <i class="fas fa-house text-base mb-0.5 text-[#0284C7]"></i>
             <span>Home</span>
         </a>
-        <a href="{{ route('directors') }}" class="flex flex-col items-center text-[10px] font-extrabold text-slate-600 hover:text-[#0284C7]">
+        <a href="{{ route('directors') }}" class="flex flex-col items-center text-[10px] font-extrabold text-slate-600 hover:text-[#0284C7] transition">
             <i class="fas fa-user-doctor text-base mb-0.5 text-[#0284C7]"></i>
             <span>Doctors</span>
         </a>
-        <a href="tel:1-800-CARE-NOW" class="flex flex-col items-center text-[10px] font-extrabold text-rose-600">
-            <div class="w-9 h-9 rounded-full bg-rose-600 text-white flex items-center justify-center -mt-5 border-4 border-white shadow-lg animate-pulse">
-                <i class="fas fa-phone text-xs"></i>
+        <a href="tel:1-800-CARE-NOW" class="flex flex-col items-center text-[10px] font-extrabold text-rose-600 relative -top-3.5 group">
+            <div class="w-11 h-11 rounded-full bg-gradient-to-tr from-rose-600 to-red-500 text-white flex items-center justify-center border-4 border-white shadow-xl shadow-rose-500/30 group-active:scale-95 transition-transform">
+                <i class="fas fa-phone text-xs animate-bounce"></i>
             </div>
-            <span class="mt-0.5">Call 24/7</span>
+            <span class="mt-0.5 font-black">Call 24/7</span>
         </a>
-        <a href="{{ route('categories') }}" class="flex flex-col items-center text-[10px] font-extrabold text-slate-600 hover:text-[#0284C7]">
+        <a href="{{ route('categories') }}" class="flex flex-col items-center text-[10px] font-extrabold text-slate-600 hover:text-[#0284C7] transition">
             <i class="fas fa-stethoscope text-base mb-0.5 text-[#0284C7]"></i>
             <span>Depts</span>
         </a>
-        <a href="{{ route('home') }}#appointment" class="flex flex-col items-center text-[10px] font-extrabold text-slate-600 hover:text-[#0284C7]">
+        <a href="{{ route('home') }}#appointment" class="flex flex-col items-center text-[10px] font-extrabold text-slate-600 hover:text-[#0284C7] transition">
             <i class="fas fa-calendar-check text-base mb-0.5 text-[#0284C7]"></i>
             <span>Book</span>
         </a>

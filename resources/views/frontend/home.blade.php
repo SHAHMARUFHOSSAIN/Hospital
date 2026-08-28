@@ -124,19 +124,21 @@
             </div>
 
             <!-- Right Blood Stocks Ticker & Call Button -->
-            <div class="flex flex-wrap items-center justify-center gap-4">
+            <div class="w-full lg:w-auto flex flex-col sm:flex-row items-center justify-center lg:justify-end gap-4">
                 @if(isset($bloodStocks) && $bloodStocks->count())
-                <div class="flex items-center gap-3 bg-slate-950/90 backdrop-blur-md p-3 rounded-2xl border border-rose-900/50 shadow-2xl">
-                    @foreach($bloodStocks as $stock)
-                    <div class="px-3.5 py-2 rounded-xl bg-gradient-to-b from-rose-950/80 to-slate-950 border border-rose-500/30 text-center transition-all hover:scale-110 hover:border-rose-400 shadow-md">
-                        <span class="text-rose-400 font-black text-sm block tracking-wide">{{ $stock->blood_group }}</span>
-                        <span class="text-[10px] text-slate-300 font-extrabold">{{ $stock->units_available }} Bags</span>
+                <div class="w-full sm:w-auto overflow-x-auto scrollbar-thin p-1 max-w-full">
+                    <div class="inline-flex items-center gap-2.5 bg-slate-950/90 backdrop-blur-md p-2.5 sm:p-3 rounded-2xl border border-rose-900/50 shadow-2xl shrink-0">
+                        @foreach($bloodStocks as $stock)
+                        <div class="px-3 sm:px-3.5 py-2 rounded-xl bg-gradient-to-b from-rose-950/80 to-slate-950 border border-rose-500/30 text-center transition-all hover:scale-105 hover:border-rose-400 shadow-md shrink-0 min-w-[65px]">
+                            <span class="text-rose-400 font-black text-xs sm:text-sm block tracking-wide">{{ $stock->blood_group }}</span>
+                            <span class="text-[9px] sm:text-[10px] text-slate-300 font-extrabold whitespace-nowrap">{{ $stock->units_available }} Bags</span>
+                        </div>
+                        @endforeach
                     </div>
-                    @endforeach
                 </div>
                 @endif
 
-                <a href="tel:1-800-CARE-NOW" class="px-7 py-4 bg-gradient-to-r from-rose-600 to-red-600 hover:from-rose-500 hover:to-red-500 text-white font-black text-xs rounded-full shadow-[0_0_25px_rgba(225,29,72,0.4)] transition-all hover:scale-105 flex items-center gap-2.5 uppercase tracking-wider">
+                <a href="tel:1-800-CARE-NOW" class="w-full sm:w-auto px-7 py-3.5 sm:py-4 bg-gradient-to-r from-rose-600 to-red-600 hover:from-rose-500 hover:to-red-500 text-white font-black text-xs rounded-full shadow-[0_0_25px_rgba(225,29,72,0.4)] transition-all hover:scale-105 flex items-center justify-center gap-2.5 uppercase tracking-wider shrink-0">
                     <i class="fas fa-ambulance text-sm animate-bounce"></i>
                     <span>Call Ambulance Dispatch</span>
                 </a>
