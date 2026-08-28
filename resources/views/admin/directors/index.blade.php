@@ -3,14 +3,14 @@
 @section('content')
 <div class="py-4">
     <div class="max-w-7xl mx-auto">
-        <div class="flex justify-between items-center mb-6">
+        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mb-6">
             <div>
-                <h1 class="text-2xl font-extrabold text-white flex items-center gap-2">
+                <h1 class="text-xl sm:text-2xl font-extrabold text-white flex items-center gap-2">
                     <i class="fas fa-user-doctor text-sky-400"></i> Specialist Doctors Directory CRUD
                 </h1>
                 <p class="text-slate-400 text-xs mt-1">Manage doctor profiles, qualifications, consultation fees, chamber hours &amp; room numbers.</p>
             </div>
-            <a href="{{ route('admin.directors.create') }}" class="px-5 py-2.5 bg-[#0284C7] hover:bg-sky-700 text-white font-extrabold text-xs rounded-xl shadow transition">
+            <a href="{{ route('admin.directors.create') }}" class="inline-flex items-center justify-center px-5 py-2.5 bg-[#0284C7] hover:bg-sky-700 text-white font-extrabold text-xs rounded-xl shadow transition shrink-0 self-start sm:self-auto">
                 + Add Specialist Doctor
             </a>
         </div>
@@ -22,6 +22,7 @@
         @endif
 
         <div class="bg-slate-900 rounded-2xl border border-slate-800 overflow-hidden">
+            <div class="overflow-x-auto">
             <table class="min-w-full text-xs">
                 <thead class="bg-slate-950 text-slate-400 font-extrabold uppercase">
                     <tr>
@@ -70,6 +71,7 @@
                     @endforelse
                 </tbody>
             </table>
+            </div>
         </div>
     </div>
 </div>
