@@ -86,9 +86,13 @@
                     <i class="fas fa-vial text-base w-5 text-center text-purple-400 shrink-0"></i>
                     <span>Diagnostic Lab Reports</span>
                 </a>
-                <a href="{{ route('admin.inventories.index') }}" @click="mobileMenuOpen = false" class="flex items-center gap-3.5 px-3.5 py-3 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/80 transition-all {{ request()->routeIs('admin.inventories.*') ? 'bg-[#0284C7] text-white shadow-lg' : '' }}">
+                <a href="{{ route('admin.inventories.index') }}" @click="mobileMenuOpen = false" class="flex items-center gap-3.5 px-3.5 py-3 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/80 transition-all {{ request()->routeIs('admin.inventories.index') ? 'bg-[#0284C7] text-white shadow-lg' : '' }}">
                     <i class="fas fa-boxes-stacked text-base w-5 text-center text-cyan-400 shrink-0"></i>
                     <span>Pharmacy &amp; Stock Inventory</span>
+                </a>
+                <a href="{{ route('admin.inventories.pos') }}" @click="mobileMenuOpen = false" class="flex items-center gap-3.5 px-3.5 py-3 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/80 transition-all {{ request()->routeIs('admin.inventories.pos') ? 'bg-emerald-600 text-white shadow-lg' : '' }}">
+                    <i class="fas fa-cash-register text-base w-5 text-center text-emerald-400 shrink-0"></i>
+                    <span>Pharmacy POS Counter</span>
                 </a>
 
                 <a href="{{ route('admin.custom-orders.index') }}" @click="mobileMenuOpen = false" class="flex items-center gap-3.5 px-3.5 py-3 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/80 transition-all relative {{ request()->routeIs('admin.custom-orders.*') ? 'bg-[#0284C7] text-white shadow-lg' : '' }}">
@@ -209,9 +213,13 @@
                     <i class="fas fa-vial text-lg w-5 text-center text-purple-400 shrink-0"></i>
                     <span x-show="sidebarHover" class="whitespace-nowrap">Diagnostic Lab Reports</span>
                 </a>
-                <a href="{{ route('admin.inventories.index') }}" class="flex items-center gap-3.5 px-3.5 py-3 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/80 transition-all {{ request()->routeIs('admin.inventories.*') ? 'bg-[#0284C7] text-white shadow-lg shadow-sky-500/20' : '' }}">
+                <a href="{{ route('admin.inventories.index') }}" class="flex items-center gap-3.5 px-3.5 py-3 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/80 transition-all {{ request()->routeIs('admin.inventories.index') ? 'bg-[#0284C7] text-white shadow-lg shadow-sky-500/20' : '' }}">
                     <i class="fas fa-boxes-stacked text-lg w-5 text-center text-cyan-400 shrink-0"></i>
                     <span x-show="sidebarHover" class="whitespace-nowrap">Pharmacy &amp; Stock Inventory</span>
+                </a>
+                <a href="{{ route('admin.inventories.pos') }}" class="flex items-center gap-3.5 px-3.5 py-3 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/80 transition-all {{ request()->routeIs('admin.inventories.pos') ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-500/20' : '' }}">
+                    <i class="fas fa-cash-register text-lg w-5 text-center text-emerald-400 shrink-0"></i>
+                    <span x-show="sidebarHover" class="whitespace-nowrap">Pharmacy POS Counter</span>
                 </a>
                 <a href="{{ route('admin.custom-orders.index') }}" class="flex items-center gap-3.5 px-3.5 py-3 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/80 transition-all relative {{ request()->routeIs('admin.custom-orders.*') ? 'bg-[#0284C7] text-white shadow-lg shadow-sky-500/20' : '' }}">
                     <i class="fas fa-calendar-check text-lg w-5 text-center text-amber-400 shrink-0"></i>

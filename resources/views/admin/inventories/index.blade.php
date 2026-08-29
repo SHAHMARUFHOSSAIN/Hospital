@@ -11,9 +11,14 @@
                 </h1>
                 <p class="text-slate-400 text-xs mt-1">Track medicine stock, surgical supplies, reorder limits, and expiry dates.</p>
             </div>
-            <a href="{{ route('admin.inventories.create') }}" class="inline-flex items-center justify-center px-5 py-2.5 bg-cyan-600 hover:bg-cyan-700 text-white font-extrabold text-xs rounded-xl shadow transition shrink-0 self-start sm:self-auto">
-                + Add New Stock Item
-            </a>
+            <div class="flex items-center gap-3">
+                <a href="{{ route('admin.inventories.pos') }}" class="inline-flex items-center justify-center px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs rounded-xl shadow transition shrink-0">
+                    <i class="fas fa-cash-register mr-1.5"></i> Open Pharmacy POS Counter
+                </a>
+                <a href="{{ route('admin.inventories.create') }}" class="inline-flex items-center justify-center px-5 py-2.5 bg-cyan-600 hover:bg-cyan-700 text-white font-extrabold text-xs rounded-xl shadow transition shrink-0">
+                    + Add New Stock Item
+                </a>
+            </div>
         </div>
 
         @if(session('success'))

@@ -189,6 +189,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/invoices/{invoice}/print', [InvoiceController::class, 'print'])->name('invoices.print');
         Route::resource('invoices', InvoiceController::class);
 
+        Route::get('/inventories/pos', [InventoryController::class, 'pos'])->name('inventories.pos');
+        Route::post('/inventories/sell', [InventoryController::class, 'sell'])->name('inventories.sell');
         Route::resource('inventories', InventoryController::class)->except(['show']);
 
         Route::get('/lab-reports/{labReport}/print', [LabReportController::class, 'print'])->name('lab-reports.print');
