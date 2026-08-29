@@ -42,6 +42,10 @@ class DatabaseSeeder extends Seeder
         DB::table('invoices')->truncate();
         DB::table('inventories')->truncate();
         DB::table('lab_reports')->truncate();
+        DB::table('ipd_admissions')->truncate();
+        DB::table('blood_donors')->truncate();
+        DB::table('ot_schedules')->truncate();
+        DB::table('ambulance_dispatches')->truncate();
 
         if ($driver === 'sqlite') {
             DB::statement('PRAGMA foreign_keys = ON;');
@@ -761,6 +765,75 @@ class DatabaseSeeder extends Seeder
             'impression' => 'Mild hypercholesterolemia and hypertriglyceridemia observed. Dietary restriction and statin therapy recommended.',
             'referred_by' => 'Dr. CarePlus Cardiology OPD',
             'report_date' => now(),
+        ]);
+
+        // 23. IPD Admissions Seeder
+        \App\Models\IpdAdmission::create([
+            'admission_no' => 'IPD-2026-0001',
+            'patient_id' => $p1->id,
+            'cabin_id' => 1,
+            'attending_doctor_id' => 1,
+            'admission_date' => now()->subDays(3),
+            'status' => 'admitted',
+            'daily_rent' => 3500.00,
+            'notes' => 'Admitted to Deluxe Cabin 301 under Cardiology for cardiac rhythm monitoring.',
+        ]);
+
+        // Mark Cabin 1 as booked
+        \App\Models\Cabin::where('id', 1)->update(['status' => 'booked']);
+
+        // 24. Volunteer Blood Donors Seeder
+        \App\Models\BloodDonor::create([
+            'donor_name' => 'Tanvir Hossain',
+            'phone' => '01711998877',
+            'email' => 'tanvir.donor@example.com',
+            'blood_group' => 'O+',
+            'age' => 28,
+            'gender' => 'Male',
+            'address' => 'Dhanmondi, Dhaka',
+            'last_donated_date' => now()->subMonths(5),
+            'is_eligible' => 1,
+            'notes' => 'Regular voluntary blood donor.',
+        ]);
+
+        \App\Models\BloodDonor::create([
+            'donor_name' => 'Farhana Kabir',
+            'phone' => '01822334455',
+            'email' => 'farhana@example.com',
+            'blood_group' => 'AB+',
+            'age' => 24,
+            'gender' => 'Female',
+            'address' => 'Uttara, Dhaka',
+            'last_donated_date' => now()->subMonths(2),
+            'is_eligible' => 0,
+            'notes' => 'Rest period until next month.',
+        ]);
+
+        // 25. OT Surgery Scheduler Seeder
+        \App\Models\OtSchedule::create([
+            'ot_no' => 'OT-2026-0001',
+            'patient_id' => $p3->id,
+            'surgeon_id' => 1,
+            'operation_type' => 'Laparoscopic Cholecystectomy',
+            'ot_room' => 'OT Suite 01 (General Surgery)',
+            'scheduled_datetime' => now()->addDays(2)->setHour(10)->setMinute(0),
+            'anesthetist_name' => 'Dr. M. A. Karim, DA',
+            'status' => 'scheduled',
+            'notes' => 'Patient cleared for surgery by Cardiology department.',
+        ]);
+
+        // 26. Emergency Ambulance Dispatch Seeder
+        \App\Models\AmbulanceDispatch::create([
+            'dispatch_no' => 'AMB-2026-0001',
+            'patient_name' => 'Mrs. Rokeya Begum',
+            'phone' => '01911445566',
+            'vehicle_no' => 'DHAKA METRO-CHA-11-2026',
+            'driver_name' => 'Md. Jahangir Alam',
+            'driver_phone' => '01812345678',
+            'pickup_location' => 'Sector 7, Uttara, Dhaka',
+            'destination' => 'CarePlus Hospital Emergency ER Suite',
+            'fare_amount' => 2500.00,
+            'status' => 'on_route',
         ]);
     }
 }

@@ -25,6 +25,11 @@ use App\Http\Controllers\Admin\PrescriptionController;
 use App\Http\Controllers\Admin\InvoiceController;
 use App\Http\Controllers\Admin\InventoryController;
 use App\Http\Controllers\Admin\LabReportController;
+use App\Http\Controllers\Admin\IpdAdmissionController;
+use App\Http\Controllers\Admin\BloodDonorController;
+use App\Http\Controllers\Admin\OtScheduleController;
+use App\Http\Controllers\Admin\AmbulanceDispatchController;
+use App\Http\Controllers\Admin\AnalyticsController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
@@ -195,6 +200,15 @@ Route::middleware('auth')->group(function () {
 
         Route::get('/lab-reports/{labReport}/print', [LabReportController::class, 'print'])->name('lab-reports.print');
         Route::resource('lab-reports', LabReportController::class);
+
+        // Phase 2 Enterprise Hospital ERP Expansion Modules
+        Route::post('/ipd-admissions/{ipdAdmission}/discharge', [IpdAdmissionController::class, 'discharge'])->name('ipd-admissions.discharge');
+        Route::resource('ipd-admissions', IpdAdmissionController::class);
+
+        Route::resource('blood-donors', BloodDonorController::class)->except(['show', 'edit', 'update']);
+        Route::resource('ot-schedules', OtScheduleController::class)->except(['show', 'edit', 'update']);
+        Route::resource('ambulance-dispatches', AmbulanceDispatchController::class)->except(['show', 'edit', 'update']);
+        Route::get('/analytics', [AnalyticsController::class, 'index'])->name('analytics.index');
 
         Route::get('/custom-orders/print', [CustomOrderController::class, 'printAppointments'])->name('custom-orders.print');
         Route::get('/custom-orders', [CustomOrderController::class, 'index'])->name('custom-orders.index');

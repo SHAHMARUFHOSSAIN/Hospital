@@ -94,6 +94,26 @@
                     <i class="fas fa-cash-register text-base w-5 text-center text-emerald-400 shrink-0"></i>
                     <span>Pharmacy POS Counter</span>
                 </a>
+                <a href="{{ route('admin.ipd-admissions.index') }}" @click="mobileMenuOpen = false" class="flex items-center gap-3.5 px-3.5 py-3 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/80 transition-all {{ request()->routeIs('admin.ipd-admissions.*') ? 'bg-[#0284C7] text-white shadow-lg' : '' }}">
+                    <i class="fas fa-bed-pulse text-base w-5 text-center text-indigo-400 shrink-0"></i>
+                    <span>IPD Inpatient Cabin Admission</span>
+                </a>
+                <a href="{{ route('admin.blood-donors.index') }}" @click="mobileMenuOpen = false" class="flex items-center gap-3.5 px-3.5 py-3 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/80 transition-all {{ request()->routeIs('admin.blood-donors.*') ? 'bg-[#0284C7] text-white shadow-lg' : '' }}">
+                    <i class="fas fa-hand-holding-droplet text-base w-5 text-center text-rose-400 shrink-0"></i>
+                    <span>Volunteer Blood Donors</span>
+                </a>
+                <a href="{{ route('admin.ot-schedules.index') }}" @click="mobileMenuOpen = false" class="flex items-center gap-3.5 px-3.5 py-3 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/80 transition-all {{ request()->routeIs('admin.ot-schedules.*') ? 'bg-[#0284C7] text-white shadow-lg' : '' }}">
+                    <i class="fas fa-scissors text-base w-5 text-center text-teal-400 shrink-0"></i>
+                    <span>OT &amp; Surgery Scheduler</span>
+                </a>
+                <a href="{{ route('admin.ambulance-dispatches.index') }}" @click="mobileMenuOpen = false" class="flex items-center gap-3.5 px-3.5 py-3 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/80 transition-all {{ request()->routeIs('admin.ambulance-dispatches.*') ? 'bg-[#0284C7] text-white shadow-lg' : '' }}">
+                    <i class="fas fa-truck-medical text-base w-5 text-center text-sky-400 shrink-0"></i>
+                    <span>Emergency Ambulance</span>
+                </a>
+                <a href="{{ route('admin.analytics.index') }}" @click="mobileMenuOpen = false" class="flex items-center gap-3.5 px-3.5 py-3 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/80 transition-all {{ request()->routeIs('admin.analytics.*') ? 'bg-[#0284C7] text-white shadow-lg' : '' }}">
+                    <i class="fas fa-chart-line text-base w-5 text-center text-emerald-400 shrink-0"></i>
+                    <span>Executive Analytics Dashboard</span>
+                </a>
 
                 <a href="{{ route('admin.custom-orders.index') }}" @click="mobileMenuOpen = false" class="flex items-center gap-3.5 px-3.5 py-3 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/80 transition-all relative {{ request()->routeIs('admin.custom-orders.*') ? 'bg-[#0284C7] text-white shadow-lg' : '' }}">
                     <i class="fas fa-calendar-check text-base w-5 text-center text-amber-400 shrink-0"></i>
@@ -220,6 +240,26 @@
                 <a href="{{ route('admin.inventories.pos') }}" class="flex items-center gap-3.5 px-3.5 py-3 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/80 transition-all {{ request()->routeIs('admin.inventories.pos') ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-500/20' : '' }}">
                     <i class="fas fa-cash-register text-lg w-5 text-center text-emerald-400 shrink-0"></i>
                     <span x-show="sidebarHover" class="whitespace-nowrap">Pharmacy POS Counter</span>
+                </a>
+                <a href="{{ route('admin.ipd-admissions.index') }}" class="flex items-center gap-3.5 px-3.5 py-3 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/80 transition-all {{ request()->routeIs('admin.ipd-admissions.*') ? 'bg-[#0284C7] text-white shadow-lg shadow-sky-500/20' : '' }}">
+                    <i class="fas fa-bed-pulse text-lg w-5 text-center text-indigo-400 shrink-0"></i>
+                    <span x-show="sidebarHover" class="whitespace-nowrap">IPD Inpatient Cabin Admission</span>
+                </a>
+                <a href="{{ route('admin.blood-donors.index') }}" class="flex items-center gap-3.5 px-3.5 py-3 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/80 transition-all {{ request()->routeIs('admin.blood-donors.*') ? 'bg-[#0284C7] text-white shadow-lg shadow-sky-500/20' : '' }}">
+                    <i class="fas fa-hand-holding-droplet text-lg w-5 text-center text-rose-400 shrink-0"></i>
+                    <span x-show="sidebarHover" class="whitespace-nowrap">Volunteer Blood Donors</span>
+                </a>
+                <a href="{{ route('admin.ot-schedules.index') }}" class="flex items-center gap-3.5 px-3.5 py-3 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/80 transition-all {{ request()->routeIs('admin.ot-schedules.*') ? 'bg-[#0284C7] text-white shadow-lg shadow-sky-500/20' : '' }}">
+                    <i class="fas fa-scissors text-lg w-5 text-center text-teal-400 shrink-0"></i>
+                    <span x-show="sidebarHover" class="whitespace-nowrap">OT &amp; Surgery Scheduler</span>
+                </a>
+                <a href="{{ route('admin.ambulance-dispatches.index') }}" class="flex items-center gap-3.5 px-3.5 py-3 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/80 transition-all {{ request()->routeIs('admin.ambulance-dispatches.*') ? 'bg-[#0284C7] text-white shadow-lg shadow-sky-500/20' : '' }}">
+                    <i class="fas fa-truck-medical text-lg w-5 text-center text-sky-400 shrink-0"></i>
+                    <span x-show="sidebarHover" class="whitespace-nowrap">Emergency Ambulance</span>
+                </a>
+                <a href="{{ route('admin.analytics.index') }}" class="flex items-center gap-3.5 px-3.5 py-3 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/80 transition-all {{ request()->routeIs('admin.analytics.*') ? 'bg-[#0284C7] text-white shadow-lg shadow-sky-500/20' : '' }}">
+                    <i class="fas fa-chart-line text-lg w-5 text-center text-emerald-400 shrink-0"></i>
+                    <span x-show="sidebarHover" class="whitespace-nowrap">Executive Analytics Dashboard</span>
                 </a>
                 <a href="{{ route('admin.custom-orders.index') }}" class="flex items-center gap-3.5 px-3.5 py-3 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/80 transition-all relative {{ request()->routeIs('admin.custom-orders.*') ? 'bg-[#0284C7] text-white shadow-lg shadow-sky-500/20' : '' }}">
                     <i class="fas fa-calendar-check text-lg w-5 text-center text-amber-400 shrink-0"></i>
