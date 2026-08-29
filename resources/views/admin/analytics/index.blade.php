@@ -7,13 +7,41 @@
         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div>
                 <h1 class="text-xl sm:text-2xl font-extrabold text-white flex items-center gap-2">
-                    <i class="fas fa-[#0284C7] fa-chart-line text-emerald-400"></i> Executive Financial &amp; Operations Dashboard
+                    <i class="fas fa-chart-line text-emerald-400"></i> Executive Financial &amp; Operations Dashboard
                 </h1>
-                <p class="text-slate-400 text-xs mt-1">Real-time revenue performance, department census, IPD bed occupancy, and hospital operations KPIs.</p>
+                <p class="text-slate-400 text-xs mt-1">Real-time revenue performance, department census, IPD bed occupancy, and date-wise performance statements.</p>
             </div>
             <div class="px-4 py-2 bg-slate-900 rounded-xl border border-slate-800 text-xs text-slate-300 font-bold self-start sm:self-auto">
-                <i class="fas fa-circle text-emerald-400 text-[10px] mr-1.5 animate-pulse"></i> Live Hospital Data Engine
+                <i class="fas fa-circle text-emerald-400 text-[10px] mr-1.5 animate-pulse"></i> Live Analytics Engine
             </div>
+        </div>
+
+        <!-- Date-Wise Performance Filter Bar -->
+        <div class="bg-slate-900 rounded-2xl p-4 border border-slate-800">
+            <form method="GET" action="{{ route('admin.analytics.index') }}" class="flex flex-wrap items-center gap-4 text-xs">
+                <div class="flex items-center gap-2">
+                    <label class="font-extrabold text-slate-300">From Date:</label>
+                    <input type="date" name="start_date" value="{{ request('start_date') }}"
+                        class="bg-slate-950 border border-slate-800 text-white rounded-xl px-3 py-2 outline-none focus:border-emerald-500">
+                </div>
+
+                <div class="flex items-center gap-2">
+                    <label class="font-extrabold text-slate-300">To Date:</label>
+                    <input type="date" name="end_date" value="{{ request('end_date') }}"
+                        class="bg-slate-950 border border-slate-800 text-white rounded-xl px-3 py-2 outline-none focus:border-emerald-500">
+                </div>
+
+                <div class="flex items-center gap-2 ml-auto">
+                    <button type="submit" class="px-5 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold rounded-xl transition shadow">
+                        <i class="fas fa-filter mr-1.5"></i> Apply Date Filter
+                    </button>
+                    @if(request()->hasAny(['start_date', 'end_date']))
+                    <a href="{{ route('admin.analytics.index') }}" class="px-4 py-2 bg-slate-800 text-slate-300 font-extrabold rounded-xl hover:bg-slate-700 transition">
+                        Reset Filter
+                    </a>
+                    @endif
+                </div>
+            </form>
         </div>
 
         <!-- 4 Financial & Operational Top KPI Cards -->

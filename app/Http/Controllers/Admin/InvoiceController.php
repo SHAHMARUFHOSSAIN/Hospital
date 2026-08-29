@@ -17,6 +17,14 @@ class InvoiceController extends Controller
             $query->where('status', $status);
         }
 
+        if ($startDate = $request->input('start_date')) {
+            $query->whereDate('created_at', '>=', $startDate);
+        }
+
+        if ($endDate = $request->input('end_date')) {
+            $query->whereDate('created_at', '<=', $endDate);
+        }
+
         if ($search = $request->input('search')) {
             $query->where('invoice_no', 'like', "%{$search}%")
                   ->orWhereHas('patient', function($q) use ($search) {
@@ -24,9 +32,11 @@ class InvoiceController extends Controller
                   });
         }
 
-        $invoices = $query->paginate(15);
-        $totalCollected = Invoice::sum('paid_amount');
-        $totalDue = Invoice::sum('due_amount');
+        $invoices = $query->paginate(15)->withQueryString();
+
+        // Calculate totals based on current filtered query
+        $totalCollected = (clone $query)->sum('paid_amount');
+        $totalDue = (clone $query)->sum('due_amount');
 
         return view('admin.invoices.index', compact('invoices', 'totalCollected', 'totalDue'));
     }

@@ -26,7 +26,7 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
             <div class="p-5 bg-slate-900 rounded-2xl border border-slate-800 flex items-center justify-between">
                 <div>
-                    <span class="text-xs font-extrabold text-slate-400 uppercase">Total Revenue Collected</span>
+                    <span class="text-xs font-extrabold text-slate-400 uppercase">Filtered Revenue Collected</span>
                     <h3 class="text-2xl font-black text-emerald-400 mt-1">৳ {{ number_format($totalCollected, 2) }}</h3>
                 </div>
                 <div class="w-12 h-12 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xl">
@@ -35,13 +35,51 @@
             </div>
             <div class="p-5 bg-slate-900 rounded-2xl border border-slate-800 flex items-center justify-between">
                 <div>
-                    <span class="text-xs font-extrabold text-slate-400 uppercase">Total Outstanding Due</span>
+                    <span class="text-xs font-extrabold text-slate-400 uppercase">Filtered Outstanding Due</span>
                     <h3 class="text-2xl font-black text-rose-400 mt-1">৳ {{ number_format($totalDue, 2) }}</h3>
                 </div>
                 <div class="w-12 h-12 rounded-xl bg-rose-500/20 text-rose-400 flex items-center justify-center text-xl">
                     <i class="fas fa-hourglass-half"></i>
                 </div>
             </div>
+        </div>
+
+        <!-- Date-Wise Financial Filter Bar -->
+        <div class="bg-slate-900 rounded-2xl p-4 border border-slate-800 mb-6">
+            <form method="GET" action="{{ route('admin.invoices.index') }}" class="flex flex-wrap items-center gap-4 text-xs">
+                <div class="flex items-center gap-2">
+                    <label class="font-extrabold text-slate-300">From Date:</label>
+                    <input type="date" name="start_date" value="{{ request('start_date') }}"
+                        class="bg-slate-950 border border-slate-800 text-white rounded-xl px-3 py-2 outline-none focus:border-amber-500">
+                </div>
+
+                <div class="flex items-center gap-2">
+                    <label class="font-extrabold text-slate-300">To Date:</label>
+                    <input type="date" name="end_date" value="{{ request('end_date') }}"
+                        class="bg-slate-950 border border-slate-800 text-white rounded-xl px-3 py-2 outline-none focus:border-amber-500">
+                </div>
+
+                <div class="flex items-center gap-2">
+                    <label class="font-extrabold text-slate-300">Status:</label>
+                    <select name="status" class="bg-slate-950 border border-slate-800 text-white rounded-xl px-3 py-2 outline-none focus:border-amber-500">
+                        <option value="">All Statuses</option>
+                        <option value="paid" {{ request('status') == 'paid' ? 'selected' : '' }}>Paid</option>
+                        <option value="partial" {{ request('status') == 'partial' ? 'selected' : '' }}>Partial</option>
+                        <option value="unpaid" {{ request('status') == 'unpaid' ? 'selected' : '' }}>Unpaid</option>
+                    </select>
+                </div>
+
+                <div class="flex items-center gap-2 ml-auto">
+                    <button type="submit" class="px-4 py-2 bg-amber-500 hover:bg-amber-600 text-white font-extrabold rounded-xl transition shadow">
+                        <i class="fas fa-filter mr-1"></i> Filter Date Range
+                    </button>
+                    @if(request()->hasAny(['start_date', 'end_date', 'status', 'search']))
+                    <a href="{{ route('admin.invoices.index') }}" class="px-4 py-2 bg-slate-800 text-slate-300 font-extrabold rounded-xl hover:bg-slate-700 transition">
+                        Reset
+                    </a>
+                    @endif
+                </div>
+            </form>
         </div>
 
         <!-- Invoices Table -->
