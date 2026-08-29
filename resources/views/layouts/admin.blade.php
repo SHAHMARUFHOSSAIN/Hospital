@@ -68,6 +68,29 @@
                     <i class="fas fa-chart-line text-base w-5 text-center shrink-0"></i>
                     <span>Dashboard</span>
                 </a>
+
+                <!-- ERP Core Modules -->
+                <a href="{{ route('admin.patients.index') }}" @click="mobileMenuOpen = false" class="flex items-center gap-3.5 px-3.5 py-3 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/80 transition-all {{ request()->routeIs('admin.patients.*') ? 'bg-[#0284C7] text-white shadow-lg' : '' }}">
+                    <i class="fas fa-hospital-user text-base w-5 text-center text-teal-400 shrink-0"></i>
+                    <span>Patients &amp; UHID Directory</span>
+                </a>
+                <a href="{{ route('admin.prescriptions.index') }}" @click="mobileMenuOpen = false" class="flex items-center gap-3.5 px-3.5 py-3 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/80 transition-all {{ request()->routeIs('admin.prescriptions.*') ? 'bg-[#0284C7] text-white shadow-lg' : '' }}">
+                    <i class="fas fa-file-prescription text-base w-5 text-center text-sky-400 shrink-0"></i>
+                    <span>Doctor E-Prescriptions (Rx)</span>
+                </a>
+                <a href="{{ route('admin.invoices.index') }}" @click="mobileMenuOpen = false" class="flex items-center gap-3.5 px-3.5 py-3 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/80 transition-all {{ request()->routeIs('admin.invoices.*') ? 'bg-[#0284C7] text-white shadow-lg' : '' }}">
+                    <i class="fas fa-file-invoice-dollar text-base w-5 text-center text-amber-400 shrink-0"></i>
+                    <span>Invoices &amp; Hospital Billing</span>
+                </a>
+                <a href="{{ route('admin.lab-reports.index') }}" @click="mobileMenuOpen = false" class="flex items-center gap-3.5 px-3.5 py-3 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/80 transition-all {{ request()->routeIs('admin.lab-reports.*') ? 'bg-[#0284C7] text-white shadow-lg' : '' }}">
+                    <i class="fas fa-vial text-base w-5 text-center text-purple-400 shrink-0"></i>
+                    <span>Diagnostic Lab Reports</span>
+                </a>
+                <a href="{{ route('admin.inventories.index') }}" @click="mobileMenuOpen = false" class="flex items-center gap-3.5 px-3.5 py-3 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/80 transition-all {{ request()->routeIs('admin.inventories.*') ? 'bg-[#0284C7] text-white shadow-lg' : '' }}">
+                    <i class="fas fa-boxes-stacked text-base w-5 text-center text-cyan-400 shrink-0"></i>
+                    <span>Pharmacy &amp; Stock Inventory</span>
+                </a>
+
                 <a href="{{ route('admin.custom-orders.index') }}" @click="mobileMenuOpen = false" class="flex items-center gap-3.5 px-3.5 py-3 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/80 transition-all relative {{ request()->routeIs('admin.custom-orders.*') ? 'bg-[#0284C7] text-white shadow-lg' : '' }}">
                     <i class="fas fa-calendar-check text-base w-5 text-center text-amber-400 shrink-0"></i>
                     <span>Doctor Appointments</span>
@@ -167,6 +190,28 @@
                 <a href="{{ route('dashboard') }}" class="flex items-center gap-3.5 px-3.5 py-3 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/80 transition-all {{ request()->routeIs('dashboard') ? 'bg-[#0284C7] text-white shadow-lg shadow-sky-500/20' : '' }}">
                     <i class="fas fa-chart-line text-lg w-5 text-center shrink-0"></i>
                     <span x-show="sidebarHover" class="whitespace-nowrap">Dashboard</span>
+                </a>
+
+                <!-- ERP Core Modules -->
+                <a href="{{ route('admin.patients.index') }}" class="flex items-center gap-3.5 px-3.5 py-3 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/80 transition-all {{ request()->routeIs('admin.patients.*') ? 'bg-[#0284C7] text-white shadow-lg shadow-sky-500/20' : '' }}">
+                    <i class="fas fa-hospital-user text-lg w-5 text-center text-teal-400 shrink-0"></i>
+                    <span x-show="sidebarHover" class="whitespace-nowrap">Patients &amp; UHID Directory</span>
+                </a>
+                <a href="{{ route('admin.prescriptions.index') }}" class="flex items-center gap-3.5 px-3.5 py-3 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/80 transition-all {{ request()->routeIs('admin.prescriptions.*') ? 'bg-[#0284C7] text-white shadow-lg shadow-sky-500/20' : '' }}">
+                    <i class="fas fa-file-prescription text-lg w-5 text-center text-sky-400 shrink-0"></i>
+                    <span x-show="sidebarHover" class="whitespace-nowrap">Doctor E-Prescriptions (Rx)</span>
+                </a>
+                <a href="{{ route('admin.invoices.index') }}" class="flex items-center gap-3.5 px-3.5 py-3 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/80 transition-all {{ request()->routeIs('admin.invoices.*') ? 'bg-[#0284C7] text-white shadow-lg shadow-sky-500/20' : '' }}">
+                    <i class="fas fa-file-invoice-dollar text-lg w-5 text-center text-amber-400 shrink-0"></i>
+                    <span x-show="sidebarHover" class="whitespace-nowrap">Invoices &amp; Hospital Billing</span>
+                </a>
+                <a href="{{ route('admin.lab-reports.index') }}" class="flex items-center gap-3.5 px-3.5 py-3 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/80 transition-all {{ request()->routeIs('admin.lab-reports.*') ? 'bg-[#0284C7] text-white shadow-lg shadow-sky-500/20' : '' }}">
+                    <i class="fas fa-vial text-lg w-5 text-center text-purple-400 shrink-0"></i>
+                    <span x-show="sidebarHover" class="whitespace-nowrap">Diagnostic Lab Reports</span>
+                </a>
+                <a href="{{ route('admin.inventories.index') }}" class="flex items-center gap-3.5 px-3.5 py-3 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/80 transition-all {{ request()->routeIs('admin.inventories.*') ? 'bg-[#0284C7] text-white shadow-lg shadow-sky-500/20' : '' }}">
+                    <i class="fas fa-boxes-stacked text-lg w-5 text-center text-cyan-400 shrink-0"></i>
+                    <span x-show="sidebarHover" class="whitespace-nowrap">Pharmacy &amp; Stock Inventory</span>
                 </a>
                 <a href="{{ route('admin.custom-orders.index') }}" class="flex items-center gap-3.5 px-3.5 py-3 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/80 transition-all relative {{ request()->routeIs('admin.custom-orders.*') ? 'bg-[#0284C7] text-white shadow-lg shadow-sky-500/20' : '' }}">
                     <i class="fas fa-calendar-check text-lg w-5 text-center text-amber-400 shrink-0"></i>

@@ -17,10 +17,14 @@ use App\Http\Controllers\Admin\ButtonTypeController;
 use App\Http\Controllers\Admin\CustomOrderController;
 use App\Http\Controllers\Admin\CabinController as AdminCabinController;
 use App\Http\Controllers\Admin\DiagnosticTestController as AdminDiagnosticTestController;
-use App\Http\Controllers\Admin\MedicalEquipmentController as AdminMedicalEquipmentController;
 use App\Http\Controllers\Admin\FaqController as AdminFaqController;
 use App\Http\Controllers\Admin\HealthBlogController as AdminHealthBlogController;
 use App\Http\Controllers\Admin\BloodBankController as AdminBloodBankController;
+use App\Http\Controllers\Admin\PatientController;
+use App\Http\Controllers\Admin\PrescriptionController;
+use App\Http\Controllers\Admin\InvoiceController;
+use App\Http\Controllers\Admin\InventoryController;
+use App\Http\Controllers\Admin\LabReportController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
@@ -175,6 +179,20 @@ Route::middleware('auth')->group(function () {
         Route::resource('faqs', AdminFaqController::class)->except(['show']);
         Route::resource('health-blogs', AdminHealthBlogController::class)->except(['show']);
         Route::resource('blood-banks', AdminBloodBankController::class)->except(['show']);
+
+        // Complete Hospital Management System (ERP) Core Modules
+        Route::resource('patients', PatientController::class);
+        
+        Route::get('/prescriptions/{prescription}/print', [PrescriptionController::class, 'print'])->name('prescriptions.print');
+        Route::resource('prescriptions', PrescriptionController::class);
+
+        Route::get('/invoices/{invoice}/print', [InvoiceController::class, 'print'])->name('invoices.print');
+        Route::resource('invoices', InvoiceController::class);
+
+        Route::resource('inventories', InventoryController::class)->except(['show']);
+
+        Route::get('/lab-reports/{labReport}/print', [LabReportController::class, 'print'])->name('lab-reports.print');
+        Route::resource('lab-reports', LabReportController::class);
 
         Route::get('/custom-orders/print', [CustomOrderController::class, 'printAppointments'])->name('custom-orders.print');
         Route::get('/custom-orders', [CustomOrderController::class, 'index'])->name('custom-orders.index');

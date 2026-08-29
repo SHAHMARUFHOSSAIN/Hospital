@@ -37,6 +37,11 @@ class DatabaseSeeder extends Seeder
         DB::table('faqs')->truncate();
         DB::table('health_blogs')->truncate();
         DB::table('blood_banks')->truncate();
+        DB::table('patients')->truncate();
+        DB::table('prescriptions')->truncate();
+        DB::table('invoices')->truncate();
+        DB::table('inventories')->truncate();
+        DB::table('lab_reports')->truncate();
 
         if ($driver === 'sqlite') {
             DB::statement('PRAGMA foreign_keys = ON;');
@@ -585,6 +590,177 @@ class DatabaseSeeder extends Seeder
             ['title' => '3.0T MRI Scanner Facility', 'type' => 'gallery', 'file_path' => '', 'url' => 'https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=800&q=80', 'alt' => 'MRI Facility', 'sort_order' => 2, 'is_active' => 1, 'created_at' => $now, 'updated_at' => $now],
             ['title' => 'Cardiac ICU & Critical Care Unit', 'type' => 'gallery', 'file_path' => '', 'url' => 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=800&q=80', 'alt' => 'Cardiac ICU', 'sort_order' => 3, 'is_active' => 1, 'created_at' => $now, 'updated_at' => $now],
             ['title' => 'Executive Patient Lounge', 'type' => 'gallery', 'file_path' => '', 'url' => 'https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=800&q=80', 'alt' => 'Executive Lounge', 'sort_order' => 4, 'is_active' => 1, 'created_at' => $now, 'updated_at' => $now],
+        ]);
+
+        // 18. Patients ERP Seeder
+        $p1 = \App\Models\Patient::create([
+            'patient_id' => 'PAT-2026-0001',
+            'name' => 'Mohammad Tariqul Islam',
+            'phone' => '01711223344',
+            'email' => 'tariqul@example.com',
+            'age' => 42,
+            'gender' => 'Male',
+            'blood_group' => 'B+',
+            'address' => 'House 24, Road 8, Dhanmondi, Dhaka',
+            'medical_history' => 'Type 2 Diabetes, Mild Hypertension',
+        ]);
+
+        $p2 = \App\Models\Patient::create([
+            'patient_id' => 'PAT-2026-0002',
+            'name' => 'Nusrat Jahan Shikha',
+            'phone' => '01899887766',
+            'email' => 'nusrat@example.com',
+            'age' => 29,
+            'gender' => 'Female',
+            'blood_group' => 'O+',
+            'address' => 'Sector 4, Uttara, Dhaka',
+            'medical_history' => 'Dust Allergy, Asthmatic tendencies',
+        ]);
+
+        $p3 = \App\Models\Patient::create([
+            'patient_id' => 'PAT-2026-0003',
+            'name' => 'Dr. Rafiqul Ahsan',
+            'phone' => '01922334455',
+            'email' => 'rafiqul@example.com',
+            'age' => 58,
+            'gender' => 'Male',
+            'blood_group' => 'A+',
+            'address' => 'Mirpur DOHS, Dhaka',
+            'medical_history' => 'Post-CABG Cardiac Followup',
+        ]);
+
+        // 19. Prescriptions (Rx) Seeder
+        \App\Models\Prescription::create([
+            'prescription_no' => 'RX-2026-0001',
+            'patient_id' => $p1->id,
+            'doctor_id' => 1,
+            'vitals_bp' => '125/82',
+            'vitals_pulse' => '76 bpm',
+            'vitals_weight' => '72 kg',
+            'vitals_temp' => '98.4 F',
+            'chief_complaints' => "Chest tightness during morning walking\nPalpitations for 2 days",
+            'diagnosis' => 'Stable Angina Pectoris',
+            'medicines' => [
+                ['name' => 'Tab. Cardizan 5mg', 'dosage' => '1 + 0 + 1', 'timing' => 'After Food', 'duration' => '1 Month'],
+                ['name' => 'Tab. Ecosprin 75mg', 'dosage' => '0 + 0 + 1', 'timing' => 'After Food', 'duration' => '1 Month'],
+                ['name' => 'Cap. Rosuva 10mg', 'dosage' => '0 + 0 + 1', 'timing' => 'At Bedtime', 'duration' => '1 Month']
+            ],
+            'advised_tests' => "ECG 12-Lead\nEchocardiogram (2D Color Doppler)\nLipid Profile",
+            'general_advice' => 'Avoid oily foods. Walk 30 minutes daily. Avoid stress.',
+            'follow_up_date' => now()->addDays(30),
+        ]);
+
+        \App\Models\Prescription::create([
+            'prescription_no' => 'RX-2026-0002',
+            'patient_id' => $p2->id,
+            'doctor_id' => 2,
+            'vitals_bp' => '115/75',
+            'vitals_pulse' => '80 bpm',
+            'vitals_weight' => '54 kg',
+            'vitals_temp' => '99.1 F',
+            'chief_complaints' => 'Persistent dry cough, mild fever for 3 days',
+            'diagnosis' => 'Bronchial Asthma Exacerbation',
+            'medicines' => [
+                ['name' => 'Inhaler Seroflo 250', 'dosage' => '2 Puffs + 2 Puffs', 'timing' => 'Morning & Evening', 'duration' => '15 Days'],
+                ['name' => 'Tab. Montene 10mg', 'dosage' => '0 + 0 + 1', 'timing' => 'At Night', 'duration' => '1 Month'],
+                ['name' => 'Tab. Napa 500mg', 'dosage' => '1 + 1 + 1', 'timing' => 'After Food', 'duration' => '5 Days']
+            ],
+            'advised_tests' => 'Spirometry with Reversibility Test',
+            'general_advice' => 'Use warm water steam inhalation twice daily.',
+            'follow_up_date' => now()->addDays(15),
+        ]);
+
+        // 20. Invoices Billing Seeder
+        \App\Models\Invoice::create([
+            'invoice_no' => 'INV-2026-0001',
+            'patient_id' => $p1->id,
+            'items' => [
+                ['description' => 'Senior Consultant OPD Consultation Fee', 'amount' => 1500.00],
+                ['description' => '12-Lead Digital ECG Test', 'amount' => 800.00],
+                ['description' => '2D Color Doppler Echocardiogram', 'amount' => 3500.00],
+                ['description' => 'Comprehensive Cardiac Lipid Panel', 'amount' => 1200.00],
+            ],
+            'subtotal' => 7000.00,
+            'discount' => 500.00,
+            'total_amount' => 6500.00,
+            'paid_amount' => 6500.00,
+            'due_amount' => 0.00,
+            'payment_method' => 'card',
+            'status' => 'paid',
+            'notes' => 'Full Payment Cleared via Visa Credit Card',
+        ]);
+
+        \App\Models\Invoice::create([
+            'invoice_no' => 'INV-2026-0002',
+            'patient_id' => $p2->id,
+            'items' => [
+                ['description' => 'Pulmonology Consultation Fee', 'amount' => 1200.00],
+                ['description' => 'Spirometry Lung Function Test', 'amount' => 1800.00],
+                ['description' => 'Chest X-Ray (P/A View)', 'amount' => 700.00],
+            ],
+            'subtotal' => 3700.00,
+            'discount' => 200.00,
+            'total_amount' => 3500.00,
+            'paid_amount' => 2000.00,
+            'due_amount' => 1500.00,
+            'payment_method' => 'cash',
+            'status' => 'partial',
+            'notes' => 'Partial Payment Received at Cash Counter',
+        ]);
+
+        // 21. Pharmacy Inventory Seeder
+        \App\Models\Inventory::create([
+            'item_code' => 'ITM-1001',
+            'item_name' => 'Tab. Napa Extend 665mg',
+            'category' => 'medicine',
+            'quantity' => 450,
+            'reorder_level' => 50,
+            'unit_price' => 2.50,
+            'supplier' => 'Beximco Pharmaceuticals Ltd.',
+            'expiry_date' => now()->addMonths(18),
+            'notes' => 'Paracetamol Extended Release',
+        ]);
+
+        \App\Models\Inventory::create([
+            'item_code' => 'ITM-1002',
+            'item_name' => 'Inj. Ceftriaxone 1g Vial',
+            'category' => 'medicine',
+            'quantity' => 8,
+            'reorder_level' => 20,
+            'unit_price' => 180.00,
+            'supplier' => 'Square Pharmaceuticals Ltd.',
+            'expiry_date' => now()->addMonths(6),
+            'notes' => '3rd Gen Cephalosporin Antibiotic - LOW STOCK ALERT',
+        ]);
+
+        \App\Models\Inventory::create([
+            'item_code' => 'ITM-1003',
+            'item_name' => 'Disposable Sterile Syringe 5ml (Pack of 100)',
+            'category' => 'surgical',
+            'quantity' => 120,
+            'reorder_level' => 30,
+            'unit_price' => 350.00,
+            'supplier' => 'Getwell Medical Devices',
+            'expiry_date' => now()->addYears(3),
+            'notes' => 'Sterile Syringe Set',
+        ]);
+
+        // 22. Lab Test Reports Seeder
+        \App\Models\LabReport::create([
+            'report_no' => 'LAB-2026-0001',
+            'patient_id' => $p1->id,
+            'test_name' => 'Comprehensive Lipid Profile Panel',
+            'category' => 'biochemistry',
+            'parameters' => [
+                ['parameter' => 'Total Cholesterol', 'value' => '235', 'unit' => 'mg/dL', 'reference_range' => '< 200 mg/dL'],
+                ['parameter' => 'Triglycerides', 'value' => '190', 'unit' => 'mg/dL', 'reference_range' => '< 150 mg/dL'],
+                ['parameter' => 'HDL (Good Cholesterol)', 'value' => '38', 'unit' => 'mg/dL', 'reference_range' => '> 40 mg/dL'],
+                ['parameter' => 'LDL (Bad Cholesterol)', 'value' => '158', 'unit' => 'mg/dL', 'reference_range' => '< 100 mg/dL'],
+            ],
+            'status' => 'completed',
+            'impression' => 'Mild hypercholesterolemia and hypertriglyceridemia observed. Dietary restriction and statin therapy recommended.',
+            'referred_by' => 'Dr. CarePlus Cardiology OPD',
+            'report_date' => now(),
         ]);
     }
 }
