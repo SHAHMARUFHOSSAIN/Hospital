@@ -32,6 +32,9 @@ if [ ! -L /var/www/html/public/storage ]; then
     php artisan storage:link --no-interaction || true
 fi
 
+# Run Package Discovery safely at container runtime
+php artisan package:discover --ansi || true
+
 # Run Artisan cache optimizations if in production and APP_KEY is set
 if [ "$APP_ENV" = "production" ] && [ -n "$APP_KEY" ]; then
     php artisan config:cache || true

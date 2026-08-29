@@ -1,8 +1,8 @@
 # Stage 1: Build frontend assets with Node.js
 FROM node:20-alpine AS node-builder
 WORKDIR /app
-COPY package.json package-lock.json ./
-RUN npm ci || npm install
+COPY package*.json ./
+RUN npm install --include=dev
 COPY . .
 RUN npm run build
 
@@ -47,8 +47,8 @@ COPY . /var/www/html
 # Copy compiled frontend assets from Node build stage
 COPY --from=node-builder /app/public/build /var/www/html/public/build
 
-# Install PHP dependencies for production
-RUN composer install --no-dev --optimize-autoloader --no-interaction
+# Install PHP dependencies for production (--no-scripts prevents build-time artisan boot failures)
+RUN composer install --no-dev --optimize-autoloader --no-scripts --no-interaction
 
 # Configure Apache DocumentRoot to point to Laravel's public directory
 RUN sed -i 's#DocumentRoot /var/www/html#DocumentRoot /var/www/html/public#' /etc/apache2/sites-available/000-default.conf
